@@ -6,14 +6,14 @@ pipeline {
 
     stage ('Run Unit & Integration Tests') {
       // For this stage, tell Jenkins to build the agent form the dockerfile
-      agent { 
+      agent {
         dockerfile true
       }
       steps {
         // Run the Unit Tests
         sh 'py.test app/tests/unit -v --junitprefix=linux --junitxml unit_results.xml || true'
         // Run the Integration Tests
-        sh 'py.test app/tests/integration -v --junitprefix=linux --junitxml integration_results.xml || true'
+        sh 'py.test app/tests/integration -v --junitprefix=linux --junitxml integration_results.xml --debug || true'
       }
       post {
         // Parse the test results so they appear in BlueOcean UI
@@ -29,7 +29,7 @@ pipeline {
         // Only run the application when on 'master' branch
         branch 'master'
       }
-      steps {  
+      steps {
         // Remove any existing running containers
         sh 'docker container rm --force flask-calculator-app || true'
         // Re-build the Docker Image and tag it as 'latest'
