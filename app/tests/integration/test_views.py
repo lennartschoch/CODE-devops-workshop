@@ -9,7 +9,6 @@ class ViewTests(TestCase):
         self.client = TestClient(app)
 
     def test_multiply(self):
-        # r = self.client.get("/calc/3*10")
-        # self.assertEquals(r.status_code, 200)
-        # self.assertEquals(r.body, "30")
-        pass
+        r = self.client.get("/calc/3*10")
+        self.assertEquals(r.status_code, 200)
+        self.assertEquals(r.body, "30")
