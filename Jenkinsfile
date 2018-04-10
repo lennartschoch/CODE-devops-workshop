@@ -14,6 +14,7 @@ pipeline {
         sh 'py.test app/tests/unit -v --junitprefix=linux --junitxml unit_results.xml || true'
         // Run the Integration Tests
         sh 'py.test app/tests/integration -v --junitprefix=linux --junitxml integration_results.xml --debug || true'
+        sh 'cat pytestdebug.log'
       }
       post {
         // Parse the test results so they appear in BlueOcean UI
