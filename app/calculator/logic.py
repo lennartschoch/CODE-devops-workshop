@@ -18,4 +18,4 @@ class Calculator(object):
         return a * b
 
     def div(self, a, b):
-        pass
+        return a / b
