@@ -16,4 +16,4 @@ class ViewTests(TestCase):
     def test_divide(self):
         r = self.client.get("/calc/10/2")
         self.assertEquals(r.status_code, 200)
-        self.assertEquals(r.body, "4")
+        self.assertEquals(r.body, "5")
